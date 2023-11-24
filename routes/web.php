@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Auth::routes();
+
+// Route::get('/home', 'HomeController@index');
+
+Route::get('/user', [UserController::class, 'index'])->name('user');
+
+Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
+Route::get('/user/create/read', [UserController::class, 'read'])->name('user.create.read');
+Route::get('/user/create/read/update', [UserController::class, 'update'])->name('user.create.read.update');
+Route::get('/user/create/read/update/delete', [UserController::class, 'delete'])->name('user.create.read.update/delete');
+
+// Route::resource('user', UserController::class);
+// Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
+// Route::get('/user/create/read', [UserController::class, 'read'])->name('user.create.read');
